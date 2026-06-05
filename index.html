@@ -1,0 +1,1220 @@
+html
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Клуб «Буду мамой» — закрытое пространство для мам</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose: #C4705A;
+  --rose-light: #F2E8E4;
+  --rose-pale: #FAF4F1;
+  --sage: #7A9E8E;
+  --sage-light: #E8F0EC;
+  --cream: #F7F2EC;
+  --warm-dark: #2C2420;
+  --warm-mid: #6B5048;
+  --warm-muted: #A8918A;
+  --white: #FDFAF8;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--warm-dark);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  background: var(--cream);
+  padding: 80px 60px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.hero-left::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--rose-light) 30%, var(--rose-light) 70%, transparent);
+}
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 28px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 80px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--warm-dark);
+  margin-bottom: 12px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--rose);
+}
+.hero-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 300;
+  color: var(--warm-mid);
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+.hero-desc {
+  font-size: 15px;
+  color: var(--warm-muted);
+  max-width: 400px;
+  margin-bottom: 48px;
+  line-height: 1.8;
+}
+.hero-cta {
+  display: inline-block;
+  background: var(--rose);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 36px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  align-self: flex-start;
+}
+.hero-cta:hover { background: var(--warm-mid); transform: translateY(-1px); }
+
+.hero-right {
+  background: var(--rose-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  position: relative;
+}
+.hero-right-inner {
+  max-width: 380px;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-bottom: 40px;
+}
+.stat-cell {
+  background: var(--white);
+  padding: 28px 24px;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--rose);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--warm-muted);
+  line-height: 1.4;
+}
+.hero-quote {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--warm-mid);
+  line-height: 1.6;
+  padding-left: 20px;
+  border-left: 2px solid var(--rose-light);
+}
+
+/* SECTION BASE */
+section { padding: 100px 80px; }
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--warm-dark);
+  margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--rose); }
+.section-body {
+  font-size: 15px;
+  color: var(--warm-muted);
+  max-width: 560px;
+  line-height: 1.9;
+}
+
+/* FOR WHOM */
+.for-whom { background: var(--cream); }
+.for-whom-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+.whom-card {
+  background: var(--white);
+  padding: 40px 32px;
+}
+.whom-icon {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 300;
+  color: var(--rose-light);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.whom-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--warm-dark);
+  margin-bottom: 12px;
+}
+.whom-text {
+  font-size: 14px;
+  color: var(--warm-muted);
+  line-height: 1.8;
+}
+
+/* WHAT'S INSIDE */
+.inside { background: var(--white); }
+.inside-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-top: 60px;
+  align-items: start;
+}
+.inside-list { list-style: none; }
+.inside-list li {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rose-light);
+}
+.inside-list li:first-child { border-top: 1px solid var(--rose-light); }
+.inside-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--rose-light);
+  line-height: 1;
+  min-width: 48px;
+}
+.inside-content-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--warm-dark);
+  margin-bottom: 4px;
+}
+.inside-content-text {
+  font-size: 13px;
+  color: var(--warm-muted);
+  line-height: 1.7;
+}
+.inside-right {
+  position: sticky;
+  top: 40px;
+}
+.inside-feature-card {
+  background: var(--rose-pale);
+  padding: 40px;
+  margin-bottom: 2px;
+}
+.inside-feature-card:last-child { background: var(--sage-light); }
+.feature-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--warm-dark);
+  margin-bottom: 10px;
+}
+.feature-text {
+  font-size: 13px;
+  color: var(--warm-muted);
+  line-height: 1.8;
+}
+
+/* DOCTORS */
+.doctors { background: var(--cream); }
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+.doctor-card {
+  background: var(--white);
+  padding: 32px 24px;
+}
+.doctor-spec {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 12px;
+}
+.doctor-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--warm-dark);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.doctor-text {
+  font-size: 12px;
+  color: var(--warm-muted);
+  line-height: 1.7;
+}
+
+/* TARIFFS */
+.tariffs { background: var(--white); }
+.tariffs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 60px;
+}
+.tariff-card {
+  background: var(--cream);
+  padding: 40px 32px;
+  position: relative;
+  transition: transform 0.2s;
+}
+.tariff-card:hover { transform: translateY(-4px); }
+.tariff-card.featured { background: var(--rose); }
+.tariff-badge {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 20px;
+  display: block;
+}
+.tariff-card:not(.featured) .tariff-badge { color: var(--rose); }
+.tariff-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--warm-dark);
+  margin-bottom: 4px;
+}
+.tariff-card.featured .tariff-name { color: var(--white); }
+.tariff-duration {
+  font-size: 13px;
+  color: var(--warm-muted);
+  margin-bottom: 32px;
+}
+.tariff-card.featured .tariff-duration { color: rgba(255,255,255,0.7); }
+.tariff-price {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 300;
+  color: var(--rose);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tariff-card.featured .tariff-price { color: var(--white); }
+.tariff-price-note {
+  font-size: 12px;
+  color: var(--warm-muted);
+  margin-bottom: 8px;
+}
+.tariff-card.featured .tariff-price-note { color: rgba(255,255,255,0.6); }
+.tariff-total {
+  font-size: 13px;
+  color: var(--warm-mid);
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--rose-light);
+}
+.tariff-card.featured .tariff-total {
+  color: rgba(255,255,255,0.8);
+  border-bottom-color: rgba(255,255,255,0.2);
+}
+.tariff-features { list-style: none; }
+.tariff-features li {
+  font-size: 13px;
+  color: var(--warm-muted);
+  padding: 8px 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--rose-light);
+}
+.tariff-card.featured .tariff-features li {
+  color: rgba(255,255,255,0.85);
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+.tariff-features li:last-child { border-bottom: none; }
+.tariff-features li::before {
+  content: '—';
+  color: var(--rose-light);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.tariff-card.featured .tariff-features li::before { color: rgba(255,255,255,0.4); }
+.tariff-features li strong {
+  color: var(--warm-dark);
+  font-weight: 500;
+}
+.tariff-card.featured .tariff-features li strong { color: var(--white); }
+.tariff-cta {
+  display: block;
+  width: 100%;
+  margin-top: 32px;
+  padding: 14px;
+  text-align: center;
+  background: var(--rose);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.tariff-cta:hover { background: var(--warm-mid); transform: translateY(-1px); }
+.tariff-card.featured .tariff-cta {
+  background: var(--white);
+  color: var(--rose);
+}
+.tariff-card.featured .tariff-cta:hover { background: var(--rose-pale); }
+
+/* FORM SECTION */
+.form-section {
+  background: var(--warm-dark);
+  padding: 100px 80px;
+}
+.form-section .section-label { color: var(--rose-light); }
+.form-section .section-title { color: var(--white); }
+.form-section .section-title em { color: var(--rose-light); }
+.form-section .section-body { color: rgba(255,255,255,0.5); }
+
+.form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 80px;
+  margin-top: 60px;
+  align-items: start;
+}
+.form-intro-list { list-style: none; margin-top: 32px; }
+.form-intro-list li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.form-intro-list li::before {
+  content: '✦';
+  color: var(--rose);
+  font-size: 10px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.form-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 48px;
+}
+.form-step { display: none; }
+.form-step.active { display: block; }
+.form-step-title {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.form-step-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 36px;
+}
+.field { margin-bottom: 24px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 10px;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  border-radius: 0;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(255,255,255,0.2); }
+.field input:focus,
+.field select:focus,
+.field textarea:focus { border-color: var(--rose); }
+.field select option { background: var(--warm-dark); color: var(--white); }
+.field textarea { resize: vertical; min-height: 90px; }
+
+.radio-group, .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+.radio-item, .checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.radio-item input, .checkbox-item input { display: none; }
+.radio-box, .checkbox-box {
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.radio-box { border-radius: 50%; }
+.radio-item:hover .radio-box,
+.checkbox-item:hover .checkbox-box { border-color: var(--rose); }
+.radio-item input:checked ~ .radio-box,
+.checkbox-item input:checked ~ .checkbox-box {
+  border-color: var(--rose);
+  background: var(--rose);
+}
+.radio-item input:checked ~ .radio-box::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--white);
+}
+.checkbox-item input:checked ~ .checkbox-box::after {
+  content: '✓';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  color: var(--white);
+  line-height: 1;
+}
+.radio-label, .checkbox-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+}
+
+.conditional-field {
+  display: none;
+  margin-top: 10px;
+  padding-left: 30px;
+}
+.conditional-field.visible { display: block; }
+
+.form-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 36px;
+}
+.form-btn-back {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.3);
+  font-family: var(--font-body);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+.form-btn-back:hover { color: rgba(255,255,255,0.6); }
+.form-btn-next {
+  background: var(--rose);
+  border: none;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.form-btn-next:hover { background: #a85a47; transform: translateY(-1px); }
+
+.form-progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 36px;
+}
+.progress-dot {
+  width: 24px;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  transition: background 0.3s;
+}
+.progress-dot.done { background: var(--rose); }
+.progress-dot.active { background: rgba(255,255,255,0.5); }
+
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+.form-success.visible { display: block; }
+.success-icon {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--rose);
+  line-height: 1;
+  margin-bottom: 24px;
+}
+.success-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.success-text {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+  background: var(--warm-dark);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+}
+.footer-note {
+  font-size: 12px;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-eyebrow { animation: fadeUp 0.7s ease both; }
+.hero-title { animation: fadeUp 0.7s 0.15s ease both; }
+.hero-subtitle { animation: fadeUp 0.7s 0.25s ease both; }
+.hero-desc { animation: fadeUp 0.7s 0.35s ease both; }
+.hero-cta { animation: fadeUp 0.7s 0.45s ease both; }
+.stat-cell { animation: fadeUp 0.6s ease both; }
+.stat-cell:nth-child(1) { animation-delay: 0.3s; }
+.stat-cell:nth-child(2) { animation-delay: 0.4s; }
+.stat-cell:nth-child(3) { animation-delay: 0.5s; }
+.stat-cell:nth-child(4) { animation-delay: 0.6s; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-left { padding: 80px 40px; }
+  .hero-left::after { display: none; }
+  .hero-right { padding: 60px 40px; }
+  section { padding: 80px 40px; }
+  .for-whom-grid { grid-template-columns: 1fr; }
+  .inside-layout { grid-template-columns: 1fr; gap: 40px; }
+  .inside-right { position: static; }
+  .doctors-grid { grid-template-columns: 1fr 1fr; }
+  .tariffs-grid { grid-template-columns: 1fr; }
+  .form-layout { grid-template-columns: 1fr; gap: 40px; }
+  .form-section { padding: 80px 40px; }
+  footer { flex-direction: column; gap: 16px; text-align: center; padding: 40px; }
+}
+@media (max-width: 640px) {
+  .hero-left { padding: 60px 24px; }
+  section { padding: 60px 24px; }
+  .form-card { padding: 32px 24px; }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .doctors-grid { grid-template-columns: 1fr; }
+  footer { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Закрытый клуб поддержки</p>
+    <h1 class="hero-title">Буду<br><em>мамой</em></h1>
+    <p class="hero-subtitle">Пространство, где вас понимают<br>на каждом шаге пути</p>
+    <p class="hero-desc">Закрытый клуб для тех, кто планирует, ожидает ребёнка или уже стал мамой. Психологическая поддержка, живые эксперты и сообщество — в одном месте.</p>
+    <a href="#tariffs" class="hero-cta">Выбрать тариф</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-inner">
+      <div class="stat-grid">
+        <div class="stat-cell">
+          <div class="stat-number">3</div>
+          <div class="stat-label">специалиста<br>в команде</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">4+</div>
+          <div class="stat-label">врача<br>на связи</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">12</div>
+          <div class="stat-label">месяцев<br>максимум</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">живых<br>встреч</div>
+        </div>
+      </div>
+      <p class="hero-quote">«Быть мамой — это не роль. Это целая новая версия себя.»</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="for-whom">
+  <p class="section-label">Это для вас, если</p>
+  <h2 class="section-title">Вы на <em>любом этапе</em><br>пути к материнству</h2>
+  <p class="section-body">Клуб создан без ограничений по сроку или статусу. Здесь есть место каждой.</p>
+  <div class="for-whom-grid">
+    <div class="whom-card">
+      <div class="whom-icon">○</div>
+      <h3 class="whom-title">Планирую</h3>
+      <p class="whom-text">Вы только думаете о беременности и хотите подготовиться — эмоционально, физически, в отношениях с партнёром.</p>
+    </div>
+    <div class="whom-card">
+      <div class="whom-icon">◑</div>
+      <h3 class="whom-title">Ожидаю</h3>
+      <p class="whom-text">Вы беременны и хотите пройти этот путь осознанно — без лишней тревоги, с поддержкой врачей и психологов рядом.</p>
+    </div>
+    <div class="whom-card">
+      <div class="whom-icon">●</div>
+      <h3 class="whom-title">Уже мама</h3>
+      <p class="whom-text">Вы родили и адаптируетесь к новой жизни. Нужна поддержка, ответы на вопросы и живые люди, которые понимают.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE -->
+<section class="inside">
+  <p class="section-label">Что внутри клуба</p>
+  <h2 class="section-title">Всё, что нужно<br><em>в одном месте</em></h2>
+  <div class="inside-layout">
+    <ul class="inside-list">
+      <li>
+        <span class="inside-num">01</span>
+        <div>
+          <div class="inside-content-title">Закрытый канал</div>
+          <div class="inside-content-text">ВКонтакте или Telegram — на ваш выбор. Контент, практики, обсуждения и живое общество в одном пространстве.</div>
+        </div>
+      </li>
+      <li>
+        <span class="inside-num">02</span>
+        <div>
+          <div class="inside-content-title">Вопросы врачам</div>
+          <div class="inside-content-text">Гинеколог, неонатолог, эндокринолог и другие специалисты отвечают письменно — в зависимости от вашего тарифа.</div>
+        </div>
+      </li>
+      <li>
+        <span class="inside-num">03</span>
+        <div>
+          <div class="inside-content-title">Программа «Буду мамой!»</div>
+          <div class="inside-content-text">10 занятий по перинатальной психологии — входит в любой тариф как один из форматов работы.</div>
+        </div>
+      </li>
+      <li>
+        <span class="inside-num">04</span>
+        <div>
+          <div class="inside-content-title">Эфиры и групповые встречи</div>
+          <div class="inside-content-text">Живые встречи с командой — онлайн и офлайн. Записи всегда доступны участницам тарифов «Поддержка» и «Сопровождение».</div>
+        </div>
+      </li>
+      <li>
+        <span class="inside-num">05</span>
+        <div>
+          <div class="inside-content-title">Статьи, практики, видео</div>
+          <div class="inside-content-text">Регулярный контент от специалистов: дыхательные техники, медитации, ответы на частые вопросы, разборы ситуаций.</div>
+        </div>
+      </li>
+    </ul>
+    <div class="inside-right">
+      <div class="inside-feature-card">
+        <h3 class="feature-title">Психологическая поддержка</h3>
+        <p class="feature-text">Три специалиста — перинатальный психолог, телесно-ориентированный терапевт и специалист по отношениям в паре. Разные экспертизы в одном пространстве.</p>
+      </div>
+      <div class="inside-feature-card">
+        <h3 class="feature-title">Медицинская поддержка</h3>
+        <p class="feature-text">Врачи-партнёры отвечают на вопросы письменно. Это не скорая помощь — это возможность получить грамотный ориентир от специалиста, которому доверяете.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="doctors">
+  <p class="section-label">Медицинская поддержка</p>
+  <h2 class="section-title">Врачи, которые<br><em>отвечают</em></h2>
+  <p class="section-body">Специалисты на договоре с центром отвечают на вопросы письменно в рамках вашего тарифа.</p>
+  <div class="doctors-grid">
+    <div class="doctor-card">
+      <div class="doctor-spec">Гинеколог</div>
+      <div class="doctor-name">Акушер-гинеколог</div>
+      <div class="doctor-text">Беременность, роды, послеродовой период, плановые обследования и тревожные симптомы.</div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-spec">Неонатолог</div>
+      <div class="doctor-name">Врач новорождённых</div>
+      <div class="doctor-text">Уход за новорождённым, грудное вскармливание, вопросы первых месяцев жизни малыша.</div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-spec">Эндокринолог</div>
+      <div class="doctor-name">Эндокринолог</div>
+      <div class="doctor-text">Гормональный фон, щитовидная железа, гестационный диабет, обмен веществ во время беременности.</div>
+    </div>
+    <div class="doctor-card">
+      <div class="doctor-spec">По запросу</div>
+      <div class="doctor-name">Другие специалисты</div>
+      <div class="doctor-text">При необходимости к ответам подключаются нутрициолог, педиатр, невролог и другие врачи-партнёры.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFFS -->
+<section class="tariffs" id="tariffs">
+  <p class="section-label">Тарифы</p>
+  <h2 class="section-title">Выберите свой<br><em>формат поддержки</em></h2>
+  <p class="section-body">Три варианта участия — в зависимости от вашего этапа и потребностей.</p>
+  <div class="tariffs-grid">
+    <div class="tariff-card">
+      <span class="tariff-badge">3 месяца</span>
+      <div class="tariff-name">Старт</div>
+      <div class="tariff-duration">Первый шаг</div>
+      <div class="tariff-price">2 900 ₽</div>
+      <div class="tariff-price-note">в месяц</div>
+      <div class="tariff-total">8 700 ₽ итого</div>
+      <ul class="tariff-features">
+        <li>Закрытый канал (ВКонтакте / TG)</li>
+        <li>Контент, практики, статьи</li>
+        <li>Эфиры и групповые занятия</li>
+        <li>Программа «Буду мамой!»</li>
+        <li><strong>Вопросы врачам 1 раз в неделю</strong></li>
+        <li>Ответ в течение 48 ч</li>
+      </ul>
+      <a href="#form" class="tariff-cta">Вступить в клуб</a>
+    </div>
+    <div class="tariff-card featured">
+      <span class="tariff-badge">6 месяцев · популярный</span>
+      <div class="tariff-name">Поддержка</div>
+      <div class="tariff-duration">Вся беременность</div>
+      <div class="tariff-price">2 490 ₽</div>
+      <div class="tariff-price-note">в месяц · экономия 14%</div>
+      <div class="tariff-total">14 940 ₽ итого</div>
+      <ul class="tariff-features">
+        <li>Всё из тарифа «Старт»</li>
+        <li><strong>Вопросы врачам 2 раза в неделю</strong></li>
+        <li>Ответ в течение 24 ч</li>
+        <li>Записи всех прошлых эфиров</li>
+        <li>Скидка 10% на консультации</li>
+      </ul>
+      <a href="#form" class="tariff-cta">Вступить в клуб</a>
+    </div>
+    <div class="tariff-card">
+      <span class="tariff-badge">12 месяцев</span>
+      <div class="tariff-name">Сопровождение</div>
+      <div class="tariff-duration">Беременность + первый год</div>
+      <div class="tariff-price">1 990 ₽</div>
+      <div class="tariff-price-note">в месяц · экономия 31%</div>
+      <div class="tariff-total">23 880 ₽ итого</div>
+      <ul class="tariff-features">
+        <li>Всё из тарифа «Поддержка»</li>
+        <li><strong>Вопросы врачам 4 раза в неделю</strong></li>
+        <li>Ответ в течение 12 ч</li>
+        <li>Персональный куратор</li>
+        <li>Скидка 20% на консультации</li>
+        <li>Послеродовое сопровождение включено</li>
+      </ul>
+      <a href="#form" class="tariff-cta">Вступить в клуб</a>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="form" style="padding-top:100px;padding-bottom:100px;">
+  <p class="section-label">Анкета участницы</p>
+  <h2 class="section-title">Вступить<br>в <em>клуб</em></h2>
+  <p class="section-body">Заполните анкету — это поможет нам лучше вас понять и сделать участие максимально полезным.</p>
+
+  <div class="form-layout">
+    <div>
+      <ul class="form-intro-list">
+        <li>Анкета занимает около 3 минут</li>
+        <li>Ваши данные не передаются третьим лицам и используются только для работы клуба</li>
+        <li>После заполнения мы свяжемся с вами в течение 24 часов</li>
+        <li>Вы сами выбираете удобную платформу: ВКонтакте или Telegram</li>
+      </ul>
+    </div>
+
+    <div class="form-card">
+      <div class="form-progress" id="formProgress">
+        <div class="progress-dot active"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+      </div>
+
+      <div id="formSuccess" class="form-success">
+        <div class="success-icon">✦</div>
+        <div class="success-title">Заявка принята</div>
+        <div class="success-text">Спасибо! Мы получили вашу анкету и свяжемся с вами в течение 24 часов, чтобы оформить участие.</div>
+      </div>
+
+      <form id="clubForm" novalidate>
+
+        <!-- ШАГ 1 -->
+        <div class="form-step active" data-step="1">
+          <div class="form-step-title">О вас</div>
+          <div class="form-step-sub">Шаг 1 из 4</div>
+          <div class="field">
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required>
+          </div>
+          <div class="field">
+            <label for="age">Ваш возраст *</label>
+            <input type="number" id="age" name="age" placeholder="Полных лет" min="16" max="60" required>
+          </div>
+          <div class="field">
+            <label>Ваш статус *</label>
+            <div class="radio-group" id="statusGroup">
+              <label class="radio-item">
+                <input type="radio" name="status" value="planning">
+                <span class="radio-box"></span>
+                <span class="radio-label">Планирую беременность</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="status" value="pregnant">
+                <span class="radio-box"></span>
+                <span class="radio-label">Ожидаю ребёнка</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="status" value="mom">
+                <span class="radio-box"></span>
+                <span class="radio-label">Уже мама</span>
+              </label>
+            </div>
+          </div>
+          <div class="field conditional-field" id="weekField">
+            <label for="week">Срок беременности (в неделях)</label>
+            <input type="number" id="week" name="week" placeholder="Например: 20" min="1" max="42">
+          </div>
+          <div class="field conditional-field" id="childrenField">
+            <label for="children">Сколько у вас детей?</label>
+            <input type="number" id="children" name="children" placeholder="Количество детей" min="1" max="10">
+          </div>
+          <div class="form-nav">
+            <span></span>
+            <button type="button" class="form-btn-next" onclick="nextStep(1)">Далее →</button>
+          </div>
+        </div>
+
+        <!-- ШАГ 2 -->
+        <div class="form-step" data-step="2">
+          <div class="form-step-title">Интересы</div>
+          <div class="form-step-sub">Шаг 2 из 4</div>
+          <div class="field">
+            <label>Какие темы вам важны? (можно несколько)</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="topics" value="pregnancy">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-label">Беременность и роды</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="topics" value="newborn">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-label">Уход за новорождённым</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="topics" value="nutrition">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-label">Питание во время беременности и кормления</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="topics" value="health">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-label">Здоровье мамы и малыша</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="topics" value="psychology">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-label">Психология и эмоциональное состояние</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="topics" value="relations">
+                <span class="checkbox-box"></span>
+                <span class="checkbox-label">Отношения с партнёром и семьёй</span>
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="questions">Есть вопросы, которые хочется обсудить?</label>
+            <textarea id="questions" name="questions" placeholder="Что сейчас беспокоит или интересует — можно кратко"></textarea>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="form-btn-back" onclick="prevStep(2)">← Назад</button>
+            <button type="button" class="form-btn-next" onclick="nextStep(2)">Далее →</button>
+          </div>
+        </div>
+
+        <!-- ШАГ 3 -->
+        <div class="form-step" data-step="3">
+          <div class="form-step-title">Тариф и платформа</div>
+          <div class="form-step-sub">Шаг 3 из 4</div>
+          <div class="field">
+            <label>Какой тариф вас интересует?</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="tariff" value="start">
+                <span class="radio-box"></span>
+                <span class="radio-label">Старт — 3 месяца (2 900 ₽/мес)</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="tariff" value="support">
+                <span class="radio-box"></span>
+                <span class="radio-label">Поддержка — 6 месяцев (2 490 ₽/мес)</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="tariff" value="full">
+                <span class="radio-box"></span>
+                <span class="radio-label">Сопровождение — 12 месяцев (1 990 ₽/мес)</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="tariff" value="unknown">
+                <span class="radio-box"></span>
+                <span class="radio-label">Пока не определилась</span>
+              </label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Удобная платформа</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="platform" value="vk">
+                <span class="radio-box"></span>
+                <span class="radio-label">ВКонтакте</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="platform" value="tg">
+                <span class="radio-box"></span>
+                <span class="radio-label">Telegram</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="platform" value="both">
+                <span class="radio-box"></span>
+                <span class="radio-label">Оба варианта</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="form-btn-back" onclick="prevStep(3)">← Назад</button>
+            <button type="button" class="form-btn-next" onclick="nextStep(3)">Далее →</button>
+          </div>
+        </div>
+
+        <!-- ШАГ 4 -->
+        <div class="form-step" data-step="4">
+          <div class="form-step-title">Контакт</div>
+          <div class="form-step-sub">Шаг 4 из 4</div>
+          <div class="field">
+            <label for="contact">Телефон или email *</label>
+            <input type="text" id="contact" name="contact" placeholder="+7 (___) ___-__-__ или email" required>
+          </div>
+          <div class="field">
+            <label for="messenger">Ник в ВКонтакте или Telegram (необязательно)</label>
+            <input type="text" id="messenger" name="messenger" placeholder="@username или ссылка на профиль">
+          </div>
+          <div class="field">
+            <label>Как вы узнали о нас?</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="source" value="social">
+                <span class="radio-box"></span>
+                <span class="radio-label">Социальные сети</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="source" value="friend">
+                <span class="radio-box"></span>
+                <span class="radio-label">Рекомендация подруги</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="source" value="search">
+                <span class="radio-box"></span>
+                <span class="radio-label">Поисковая система</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="source" value="doctor">
+                <span class="radio-box"></span>
+                <span class="radio-label">Рекомендация врача</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="source" value="other">
+                <span class="radio-box"></span>
+                <span class="radio-label">Другое</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="form-btn-back" onclick="prevStep(4)">← Назад</button>
+            <button type="button" class="form-btn-next" onclick="submitForm()">Отправить заявку →</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Буду мамой</div>
+  <div class="footer-note">Все данные используются только для работы клуба и не передаются третьим лицам</div>
+</footer>
+
+<script>
+let currentStep = 1;
+const totalSteps = 4;
+
+function updateProgress(step) {
+  const dots = document.querySelectorAll('.progress-dot');
+  dots.forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i + 1 < step) d.classList.add('done');
+    else if (i + 1 === step) d.classList.add('active');
+  });
+}
+
+function showStep(step) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  const target = document.querySelector('[data-step="' + step + '"]');
+  if (target) target.classList.add('active');
+  updateProgress(step);
+  currentStep = step;
+}
+
+function nextStep(from) {
+  if (from === 1) {
+    const name = document.getElementById('name').value.trim();
+    const age = document.getElementById('age').value.trim();
+    const status = document.querySelector('input[name="status"]:checked');
+    if (!name || !age || !status) {
+      alert('Пожалуйста, заполните все обязательные поля.');
+      return;
+    }
+  }
+  if (from === 4) { submitForm(); return; }
+  showStep(from + 1);
+}
+
+function prevStep(from) { showStep(from - 1); }
+
+document.querySelectorAll('input[name="status"]').forEach(r => {
+  r.addEventListener('change', function() {
+    document.getElementById('weekField').classList.toggle('visible', this.value === 'pregnant');
+    document.getElementById('childrenField').classList.toggle('visible', this.value === 'mom');
+  });
+});
+
+function submitForm() {
+  const contact = document.getElementById('contact').value.trim();
+  if (!contact) {
+    alert('Пожалуйста, укажите контактные данные.');
+    return;
+  }
+  document.getElementById('clubForm').style.display = 'none';
+  document.getElementById('formProgress').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('visible');
+  document.querySelector('.form-section .section-body').style.display = 'none';
+}
+
+document.querySelectorAll('.tariff-cta').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    const tariffMap = { 'Старт': 'start', 'Поддержка': 'support', 'Сопровождение': 'full' };
+    const name = this.closest('.tariff-card').querySelector('.tariff-name').textContent.trim();
+    const val = tariffMap[name];
+    if (val) {
+      const radio = document.querySelector('input[name="tariff"][value="' + val + '"]');
+      if (radio) radio.checked = true;
+    }
+    document.getElementById('form').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
+Done
