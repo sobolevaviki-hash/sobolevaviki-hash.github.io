@@ -1212,9 +1212,8 @@ footer {
   <div class="footer-note">Все данные используются только для работы клуба и не передаются третьим лицам</div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-emailjs.init('zKKuBd2ec5VJHjNDh');
+const WEB3FORMS_KEY = '6d8cfa81-133d-4e25-b48d-1e027ebe494d';
 
 let currentStep = 1;
 const totalSteps = 4;
@@ -1310,15 +1309,41 @@ function submitForm() {
   btn.textContent = 'Отправляем...';
   btn.disabled = true;
 
-  emailjs.send('service_p1ut6vt', 'template_fy8y5mq', params)
-    .then(() => {
-      document.getElementById('clubForm').style.display = 'none';
-      document.getElementById('formProgress').style.display = 'none';
-      document.getElementById('formSuccess').classList.add('visible');
-      document.querySelector('.form-section .section-body').style.display = 'none';
+  const body = {
+    access_key: WEB3FORMS_KEY,
+    subject: '🌿 Новая заявка в клуб «Буду мамой»',
+    from_name: params.name,
+    Имя: params.name,
+    Возраст: params.age,
+    Статус: params.status,
+    'Срок / дети': params.details,
+    'Интересные темы': params.topics,
+    'Вопросы и комментарии': params.questions,
+    Тариф: params.tariff,
+    Платформа: params.platform,
+    'Телефон или email': params.contact,
+    'Ник в соцсетях': params.messenger,
+    'Источник': params.source,
+  };
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(body)
+  })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success) {
+        document.getElementById('clubForm').style.display = 'none';
+        document.getElementById('formProgress').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('visible');
+        document.querySelector('.form-section .section-body').style.display = 'none';
+      } else {
+        throw new Error(data.message);
+      }
     })
     .catch((err) => {
-      console.error('EmailJS error:', err);
+      console.error('Web3Forms error:', err);
       btn.textContent = 'Отправить заявку →';
       btn.disabled = false;
       alert('Не удалось отправить заявку. Попробуйте ещё раз или напишите нам напрямую.');
