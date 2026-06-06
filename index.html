@@ -1212,7 +1212,10 @@ footer {
   <div class="footer-note">Все данные используются только для работы клуба и не передаются третьим лицам</div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+emailjs.init('zKKuBd2ec5VJHjNDh');
+
 let currentStep = 1;
 const totalSteps = 4;
 
@@ -1262,10 +1265,64 @@ function submitForm() {
     alert('Пожалуйста, укажите контактные данные.');
     return;
   }
-  document.getElementById('clubForm').style.display = 'none';
-  document.getElementById('formProgress').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('visible');
-  document.querySelector('.form-section .section-body').style.display = 'none';
+
+  // Collect all form data
+  const statusMap = { planning: 'Планирую беременность', pregnant: 'Ожидаю ребёнка', mom: 'Уже мама' };
+  const tariffMap = { start: 'Старт — 3 месяца', support: 'Поддержка — 6 месяцев', full: 'Сопровождение — 12 месяцев', unknown: 'Не определилась' };
+  const platformMap = { vk: 'ВКонтакте', tg: 'Telegram', both: 'Оба варианта' };
+  const sourceMap = { social: 'Социальные сети', friend: 'Рекомендация подруги', search: 'Поисковая система', doctor: 'Рекомендация врача', other: 'Другое' };
+
+  const statusVal = document.querySelector('input[name="status"]:checked');
+  const tariffVal = document.querySelector('input[name="tariff"]:checked');
+  const platformVal = document.querySelector('input[name="platform"]:checked');
+  const sourceVal = document.querySelector('input[name="source"]:checked');
+  const topics = [...document.querySelectorAll('input[name="topics"]:checked')].map(el => {
+    const labelMap = { pregnancy: 'Беременность и роды', newborn: 'Уход за новорождённым', nutrition: 'Питание', health: 'Здоровье мамы и малыша', psychology: 'Психология', relations: 'Отношения с партнёром' };
+    return labelMap[el.value] || el.value;
+  }).join(', ');
+
+  const status = statusVal ? statusMap[statusVal.value] : 'Не указан';
+  let details = '';
+  if (statusVal && statusVal.value === 'pregnant') {
+    const w = document.getElementById('week').value;
+    details = w ? `Срок: ${w} недель` : 'Срок не указан';
+  } else if (statusVal && statusVal.value === 'mom') {
+    const c = document.getElementById('children').value;
+    details = c ? `Детей: ${c}` : 'Кол-во детей не указано';
+  }
+
+  const params = {
+    name: document.getElementById('name').value.trim(),
+    age: document.getElementById('age').value.trim(),
+    status: status,
+    details: details || '—',
+    topics: topics || '—',
+    questions: document.getElementById('questions').value.trim() || '—',
+    tariff: tariffVal ? tariffMap[tariffVal.value] : 'Не выбран',
+    platform: platformVal ? platformMap[platformVal.value] : 'Не указана',
+    contact: contact,
+    messenger: document.getElementById('messenger').value.trim() || '—',
+    source: sourceVal ? sourceMap[sourceVal.value] : 'Не указан',
+  };
+
+  // Disable button while sending
+  const btn = document.querySelector('[data-step="4"] .form-btn-next');
+  btn.textContent = 'Отправляем...';
+  btn.disabled = true;
+
+  emailjs.send('service_p1ut6vt', 'template_fy8y5mq', params)
+    .then(() => {
+      document.getElementById('clubForm').style.display = 'none';
+      document.getElementById('formProgress').style.display = 'none';
+      document.getElementById('formSuccess').classList.add('visible');
+      document.querySelector('.form-section .section-body').style.display = 'none';
+    })
+    .catch((err) => {
+      console.error('EmailJS error:', err);
+      btn.textContent = 'Отправить заявку →';
+      btn.disabled = false;
+      alert('Не удалось отправить заявку. Попробуйте ещё раз или напишите нам напрямую.');
+    });
 }
 
 document.querySelectorAll('.tariff-cta').forEach(btn => {
