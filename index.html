@@ -1171,6 +1171,10 @@ footer {
           <div class="form-step-title">Контакт</div>
           <div class="form-step-sub">Шаг 4 из 4</div>
           <div class="field">
+            <label for="referral">Имя подруги (если вступаете вместе)</label>
+            <input type="text" id="referral" name="referral" placeholder="Как зовут подругу, которую приводите?">
+          </div>
+          <div class="field">
             <label for="contact">Телефон или email *</label>
             <input type="text" id="contact" name="contact" placeholder="+7 (___) ___-__-__ или email" required>
           </div>
@@ -1215,6 +1219,35 @@ footer {
         </div>
 
       </form>
+    </div>
+  </div>
+</section>
+
+<!-- REFERRAL -->
+<section style="background:var(--cream);padding:80px 80px;">
+  <div style="max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div>
+      <p style="font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:20px;">Для подруг</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:300;line-height:1.2;color:var(--warm-dark);margin-bottom:20px;">Приведи подругу —<br><em style="font-style:italic;color:var(--rose);">каждая получит<br>месяц в подарок</em></h2>
+      <p style="font-size:15px;color:var(--warm-muted);line-height:1.9;margin-bottom:32px;">Вступайте в клуб вместе с подругой, сестрой или коллегой — и обе получите дополнительный месяц участия бесплатно. Поддержка работает лучше, когда рядом есть близкий человек.</p>
+      <a href="#form" style="display:inline-block;background:var(--rose);color:var(--white);font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:16px 36px;transition:background 0.25s;">Вступить вдвоём</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:2px;">
+      <div style="background:var(--white);padding:32px;">
+        <div style="font-family:var(--font-display);font-size:40px;font-weight:300;color:var(--rose-light);line-height:1;margin-bottom:12px;">01</div>
+        <div style="font-family:var(--font-display);font-size:19px;font-weight:400;color:var(--warm-dark);margin-bottom:8px;">Вступите вместе</div>
+        <div style="font-size:13px;color:var(--warm-muted);line-height:1.7;">Оформите участие одновременно — в анкете укажите имя подруги, которую приводите.</div>
+      </div>
+      <div style="background:var(--white);padding:32px;">
+        <div style="font-family:var(--font-display);font-size:40px;font-weight:300;color:var(--rose-light);line-height:1;margin-bottom:12px;">02</div>
+        <div style="font-family:var(--font-display);font-size:19px;font-weight:400;color:var(--warm-dark);margin-bottom:8px;">Мы проверим заявки</div>
+        <div style="font-size:13px;color:var(--warm-muted);line-height:1.7;">После получения двух анкет с упоминанием друг друга мы активируем бонус автоматически.</div>
+      </div>
+      <div style="background:var(--white);padding:32px;">
+        <div style="font-family:var(--font-display);font-size:40px;font-weight:300;color:var(--rose-light);line-height:1;margin-bottom:12px;">03</div>
+        <div style="font-family:var(--font-display);font-size:19px;font-weight:400;color:var(--warm-dark);margin-bottom:8px;">Каждая получает +1 месяц</div>
+        <div style="font-size:13px;color:var(--warm-muted);line-height:1.7;">Дополнительный месяц добавляется к выбранному тарифу — и вы, и подруга.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1312,6 +1345,7 @@ function submitForm() {
     tariff: tariffVal ? tariffMap[tariffVal.value] : 'Не выбран',
     platform: platformVal ? platformMap[platformVal.value] : 'Не указана',
     contact: contact,
+    'Подруга (реферал)': document.getElementById('referral').value.trim() || '—',
     messenger: document.getElementById('messenger').value.trim() || '—',
     source: sourceVal ? sourceMap[sourceVal.value] : 'Не указан',
   };
